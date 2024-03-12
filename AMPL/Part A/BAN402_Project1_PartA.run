@@ -1,0 +1,36 @@
+reset;
+model BAN402_Project1_PartA.mod;
+data BAN402_Project1_PartA.dat;
+option solver cplex;
+option presolve 0; # needed for sensitivity analysis
+option cplex_options 'sensitivity'; # cplex option to do sensitivity analysis
+solve;
+
+printf "\ncost with optimal solution:\n";
+display cost;
+
+printf "optimal abatment plan:\n";
+display u;
+
+# Slack variables for Task 2
+printf "Slack variables for reduction constraint:\n";
+display
+	reduction_constraint.body,
+	reduction_constraint.ub,
+	reduction_constraint.slack;
+
+# Sensitivity analysis 1:
+# Robustness of the reduction constraint
+printf "sensitivity analyis 1:\n";	
+display	
+	reduction_constraint,
+	reduction_constraint.down,
+	reduction_constraint.current,
+	reduction_constraint.up;
+
+# Sensitivity analysis 2:
+# Robustness of the optimal solution for u
+printf "sensitivity analyis 2:\n";	
+display	
+	u, u.current, u.down, u.up;
+	

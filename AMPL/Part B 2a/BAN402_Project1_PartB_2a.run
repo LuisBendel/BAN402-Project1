@@ -1,0 +1,32 @@
+
+reset;
+model BAN402_Project1_PartB_2a.mod;
+data BAN402_Project1_PartB_2a.dat;
+option solver cplex;
+option display_precision 12;
+solve;
+
+param total_blending;
+param total_profit;
+
+# parameter profit, to check back what the profit is now
+let total_profit :=
+	sum{p in P}x[p]*Psale[p]
+	- sum{c in C, s in S}Cpurch[c,s]*j[c,s] # purchase cost only from S1 and S2
+	- sum{p in P}Cprod[p]*x[p] # production cost
+	- AvailS3*cost_s3; # purchase cost only from S3
+
+printf "\nMaximum price we are willing to accept:\n";	
+display CostS3;
+
+printf "New optimal purchasing plan:\n";	
+display j;
+
+printf "New optimal blending plan:\n";	
+display u;
+
+printf "New optimal production plan:\n";	
+display x;
+
+printf "We now obtain a profit of:\n";	
+display total_profit;

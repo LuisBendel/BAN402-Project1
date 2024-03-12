@@ -1,0 +1,31 @@
+
+reset;
+model BAN402_Project1_PartB.mod;
+data BAN402_Project1_PartB.dat;
+option solver cplex;
+option display_precision 7;
+solve;
+
+# how much profit does it yield?
+printf "\nProfit of the optimal solution:\n";
+display profit;
+
+# optimal purchasing plan
+printf "optimal purchasing plan:\n";
+display	j;
+
+# optimal purchasing plan
+printf "optimal blending plan:\n";
+display u;
+
+# optimal purchasing plan
+printf "optimal production plan:\n";
+display x;
+	
+# sack of supply constraint to determine who is the
+# most profitable supplier
+printf "who is the most profitable supplier?:\n";
+display
+	supply_constraint.body,
+	supply_constraint.ub,
+	supply_constraint.slack;	

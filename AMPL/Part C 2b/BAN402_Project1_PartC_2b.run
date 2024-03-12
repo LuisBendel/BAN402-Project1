@@ -1,0 +1,33 @@
+reset;
+model BAN402_Project1_PartC_2b.mod;
+data BAN402_Project1_PartC_2b.dat;
+option solver cplex;
+solve;
+
+param transport; 
+param penalty;
+param unsatisfied_demand{K};
+
+let transport := sum{r in R, f in F}Cpurch[r,f]*x[r,f] + sum{f in F, k in K}Cship[f,k]*y[f,k];
+let penalty := sum{k in K}Cpen[k]*(D[k]-sum{f in F}y[f,k]);
+let {k in K} unsatisfied_demand[k] := (D[k]-sum{f in F}y[f,k]);
+
+# what is the optimal shipping plan?
+printf "\nnew optimal shipping plan from R to F:\n";
+display x;
+
+printf "new optimal shipping plan from F to K:\n";
+display y;
+
+# how much does the optimal shipping plan cost?
+printf "new optimal total tansportation cost:\n";
+display total_cost;
+
+# how much of the cost is due to transport, how much due to penalty?
+printf "distribution of costs across transportation and penalty:\n";
+display transport, penalty;
+
+# what is the market with the highest unsatisfied demand
+# and how much is the unsatisfied demand?
+printf "unsatisfied demand per market:\n";
+display unsatisfied_demand;

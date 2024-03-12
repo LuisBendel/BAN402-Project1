@@ -1,0 +1,17 @@
+reset;
+model BAN402_Project1_PartC.mod;
+data BAN402_Project1_PartC.dat;
+option solver cplex;
+solve;
+
+# what is the optimal shipping plan?
+printf "\noptimal purchasing plan from R to F:\n";
+display x;
+
+printf "optimal shipping plan from F to Markets:\n";
+display y;
+
+# how much does the optimal shipping plan cost?
+printf "minimized transportation costs:\n";
+display trans_cost;
+

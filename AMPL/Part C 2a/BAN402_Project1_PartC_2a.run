@@ -1,0 +1,9 @@
+reset;
+model BAN402_Project1_PartC_2a.mod;
+data BAN402_Project1_PartC_2a.dat;
+option solver cplex;
+solve;
+
+printf "\This is to show the infeasibility of the model if demand is increased by 25% without any other modifications.:\n";
+
+

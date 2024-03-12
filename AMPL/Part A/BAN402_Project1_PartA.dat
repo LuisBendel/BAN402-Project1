@@ -1,0 +1,26 @@
+# data for sets
+set G := CO2, CFC, N2O; # three types of gases
+set M := SCR, LEF, EP; # three reduction methods
+
+# data for the paramters
+# reduction for each gas if one of the methods is used with one unit of instensity
+param R:
+		SCR		LEF		EP :=
+CO2		5		13		12
+CFC		8		9		10
+N2O		10		25		15
+;
+
+# cost for using each of the methods with one unit of intensity
+param C:=
+SCR 500
+LEF 3300
+EP 1110
+;
+
+# minimum reduction goals for each gas
+param RMin:=
+CO2 140
+CFC 100
+N2O 180
+;

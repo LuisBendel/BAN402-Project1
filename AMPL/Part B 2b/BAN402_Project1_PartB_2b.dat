@@ -1,0 +1,102 @@
+
+# data for the sets
+set P := P1, P2, P3, P4; # Products
+set C := C1, C2, C3, C4, C5; # Cardboards, now including C5
+set S := S1, S2; # Suppliers S1 and S2
+set SN := S1, S2, S3; # All suppliers including the new S3
+set Q := STR, TRA; # Quality features
+set A := P1, P2; # Products of Category A
+set B := P3, P4; # products of Category B
+
+# data for parameters
+param Avail:
+		S1		S2 		S3 :=
+C1		0		20000	0
+C2		40000	0		0
+C3		25000	30000	0
+C4		25000	20000	0
+C5		0		0		1000
+;
+
+param AvailS3:=
+1000
+;
+
+param Profmin:=
+2988410
+;
+
+param Cpurch:
+		S1		S2 :=
+C1		0		57.5
+C2		56		0
+C3		53.5	52.5
+C4		51		50
+C5		0		0
+;
+
+param Mpurch:=
+S1	1500000
+S2	1500000
+;
+
+param Cprod:=
+P1		4
+P2		4
+P3		5
+P4		5
+;
+
+param Psale:=
+P1		80
+P2		85
+P3		97.5
+P4		100
+;
+
+param Dmin:=
+P1		9000
+P2		7000
+P3		10000
+P4		12000
+;
+
+param CapA:=
+50000
+;
+
+param CapB:=
+45000
+;
+
+# Minimum quality of products, note that we put a factor of -1 for transparency
+# because more transparency is bad and we define the quality constraint 
+# for both quality features in one constraint with >=
+param Qual:
+		STR		TRA :=
+P1		88		-2.0
+P2		92		-1.5
+P3		96		-0.3
+P4		97		-0.3
+;
+
+# Quality of cardboards, note that we put a factor of -1 for transparency
+# because more transparency is bad and we define the quality constraint 
+# for both quality features in one constraint with >=
+param IQual:
+		STR		TRA :=
+C1		98		-0.2
+C2		96		-0.4
+C3		92		-1.5
+C4		90		-2.0
+C5		97		-0.3
+;
+
+
+
+
+
+
+
+
+	

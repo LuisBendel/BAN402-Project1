@@ -1,4 +1,4 @@
-# BAN402 - Decision Modelling
+# BAN402 - Decision Modelling Project 1
 
 This is the first of three projects in the course BAN402 - Decision Modelling at NHH.
 
